@@ -1,0 +1,14 @@
+**.git
+**.github
+**.idea
+**.gitignore
+**.gitattributes
+**.editorconfig
+**.data
+**.env
+**.vscode
+**.backup
+
+# Ignoring all the markdown and class files
+*.md
+**/*.class
