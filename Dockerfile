@@ -1,7 +1,9 @@
 ARG PHP_VERSION=8.1
 FROM php:${PHP_VERSION}-fpm-alpine
 
+# Metadata
 LABEL maintainer="Asapdotid <asapdotid@gmail.com>"
+LABEL description="Docker PHP-FPM 8.1 + Nginx 1.22 (stable)"
 
 ARG TIMEZONE=Asia/Jakarta
 ENV TIMEZONE ${TIMEZONE}
@@ -149,3 +151,6 @@ STOPSIGNAL SIGQUIT
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/start.sh"]
+
+# Configure a healthcheck to validate that everything is up&running
+# HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping

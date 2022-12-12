@@ -8,6 +8,8 @@
 **.env
 **.vscode
 **.backup
+**.hooks
+**.test
 
 # Ignoring all the markdown and class files
 *.md

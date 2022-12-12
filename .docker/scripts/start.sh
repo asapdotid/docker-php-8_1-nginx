@@ -20,14 +20,15 @@ sed \
 
 # Setup FPM `www` (default) pool
 sed \
-    -e "s/pm.max_children = 5/pm.max_children = 640/g" \
-    -e "s/pm.start_servers = 2/pm.start_servers = 18/g" \
-    -e "s/pm.min_spare_servers = 1/pm.min_spare_servers = 12/g" \
-    -e "s/pm.max_spare_servers = 3/pm.max_spare_servers = 24/g" \
-    -e "s/;pm.process_idle_timeout = 10s/pm.process_idle_timeout = 10s/g" \
-    -e "s/;pm.max_requests = 500/pm.max_requests = 500/g" \
-    -e "s/;pm.status_path/pm.status_path/g" \
-    -e "s/max_execution_time = 30/max_execution_time = 180/g" \
+    -e "s|pm.max_children = 5|pm.max_children = 640|g" \
+    -e "s|pm.start_servers = 2|pm.start_servers = 18|g" \
+    -e "s|pm.min_spare_servers = 1|pm.min_spare_servers = 12|g" \
+    -e "s|pm.max_spare_servers = 3|pm.max_spare_servers = 24|g" \
+    -e "s|;pm.process_idle_timeout = 10s|pm.process_idle_timeout = 10s|g" \
+    -e "s|;pm.max_requests = 500|pm.max_requests = 500|g" \
+    -e "s|;pm.status_path = /status|pm.status_path = /fpm-status|g" \
+    -e "s|;ping.path = /ping|ping.path = /fpm-ping|g" \
+    -e "s|max_execution_time = 30|max_execution_time = 180|g" \
     -i "/usr/local/etc/php-fpm.d/www.conf"
 
 # Setup FPM global config

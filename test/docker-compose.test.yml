@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+  app:
+    image: ${DOCKER_REGISTRY}/${DOCKER_REGISTRY_USER}/${DOCKER_REGISTRY_IMAGE}:${DOCKER_REGISTRY_IMAGE_TAG}
+    build: .
+  sut:
+    image: alpine:3.17
+    depends_on:
+      - app
+    command: /tmp/run_tests.sh
+    volumes:
+      - "./run_tests.sh:/tmp/run_tests.sh:ro"
