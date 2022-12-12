@@ -1,12 +1,13 @@
 # Docker image PHP-FPM 8.1 & Nginx 1.22 (Alpine Linux)
 
-![docker hub](https://img.shields.io/docker/pulls/asapdotid/nginx-php.svg?style=flat-square)
-![docker hub](https://img.shields.io/docker/stars/asapdotid/nginx-php.svg?style=flat-square)
-![Github](https://img.shields.io/github/stars/asapdotid/nginx-php.svg?style=flat-square)
+![Docker Automated build](https://img.shields.io/docker/automated/asapdotid/php-nginx?style=flat-square)
+![docker hub](https://img.shields.io/docker/pulls/asapdotid/php-nginx.svg?style=flat-square)
+![docker hub](https://img.shields.io/docker/stars/asapdotid/php-nginx.svg?style=flat-square)
+![Github](https://img.shields.io/github/stars/asapdotid/docker-php-nginx.svg?style=flat-square)
 
 ## Overview
 
-This is a Dockerfile/image to build a container for PHP-FPM and NGINX, with the ability to pull website code from git when the container is created, as well as allowing the container to push and pull changes to the code to and from git. The container also has the ability to update templated files with variables passed to docker in order to update your code and settings. There is support for custom nginx configs, core nginx/PHP variable overrides for running preferences, X-Forwarded-For headers and UID mapping for local volume support.
+This is a Dockerfile/image to build a container for PHP-FPM and NGINX. The container also has the ability to update templated files with variables passed to docker in order to update your code and settings. There is support for custom nginx configs, core nginx/PHP variable overrides for running preferences for local volume support.
 
 Custom from original `asapdotid/php-nginx`:
 

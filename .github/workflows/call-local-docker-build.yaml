@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - main
-      - "releases/**"
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
     # don't rebuild image if someone only edited unrelated files
@@ -47,7 +46,7 @@ jobs:
       ### A list of the account/repo names for docker build. List should match what's enabled above
       ### defaults to:
       image-names: |
-        asapdotid/php-nginx-base
+        asapdotid/php-nginx
 
       ### set rules for tagging images, based on special action syntax:
       ### https://github.com/docker/metadata-action#tags-input
