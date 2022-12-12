@@ -7,7 +7,6 @@
 **.data
 **.env
 **.vscode
-**.backup
 **.hooks
 **.test
 
