@@ -9,6 +9,8 @@
 **.vscode
 **.hooks
 **.test
+**.docker_official
+**Docker_official
 
 # Ignoring all the markdown and class files
 *.md
