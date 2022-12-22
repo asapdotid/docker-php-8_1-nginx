@@ -1,6 +1,10 @@
 FROM webdevops/php:8.1-alpine
 
-ENV WEB_DOCUMENT_ROOT=/app \
+ENV APPLICATION_PATH=/app \
+    APPLICATION_UID=1000 \
+    APPLICATION_GID=1000
+
+ENV WEB_DOCUMENT_ROOT=$APPLICATION_PATH \
     WEB_DOCUMENT_INDEX=index.php \
     WEB_ALIAS_DOMAIN=*.vm \
     WEB_PHP_TIMEOUT=600 \
@@ -26,5 +30,7 @@ RUN set -x \
 
 # set timezone
 RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /etc/timezone
+
+WORKDIR $APPLICATION_PATH
 
 EXPOSE 80 443
