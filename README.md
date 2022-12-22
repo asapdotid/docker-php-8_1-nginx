@@ -36,17 +36,20 @@ PHP Extentions:
 
 ## Environment Variables
 
-| Environment     | Default      | Description                             |
-| --------------- | ------------ | --------------------------------------- |
-| TIMEZONE        | Asia/Jakarta | Timezone for OS and PHP                 |
-| APPLICATION_ENV | develpment   | For build `development` or `production` |
+| Environment     | Default      | Description                                       |
+| --------------- | ------------ | ------------------------------------------------- |
+| APPLICATION_UID | 1000         | PHP-FPM UID (Effective user ID)                   |
+| APPLICATION_GID | 1000         | PHP-FPM GID (Effective group ID)                  |
+| TIMEZONE        | Asia/Jakarta | Timezone for OS and PHP                           |
+| APP_ENV         | develpment   | For build `development` or `production`           |
+| SKIP_COMPOSER   | 0            | Support for composer install in application mount |
 
 ## Versioning
 
 | Docker Tag | Git Release | Nginx Version | PHP Version | Alpine Version |
 | ---------- | ----------- | ------------- | ----------- | -------------- |
 | latest     | Main Branch | 1.22.1        | 8.1.13      | 3.17           |
-| 1.0.0      | Main Branch | 1.22.1        | 8.1.13      | 3.17           |
+| 1.0.1      | Main Branch | 1.22.1        | 8.1.13      | 3.17           |
 
 ### Links
 
@@ -78,20 +81,20 @@ version: "3"
 
 services:
     laravel:
-        image: asapdotid/docker-php-nginx:latest
+        image: asapdotid/php-nginx:latest
         environment:
-            TZ: "Asia/Jakarta"
-            WEBROOT: "/app/public"
-            # SKIP_COMPOSER: 1 # skip install composer
-            APPLICATION_ENV: "production" # development|production
+            - TIMEZONE=Asia/Jakarta
+            - WEB_DOCUMENT_ROOT=/app/public
+            - WEB_ALIAS_DOMAIN=app.domain.com
+            - APP_ENV=production # development | production
+            # - SKIP_COMPOSER=1 # skip install composer 0 | 1
         ports:
             - "${APP_PORT:-8080}:8080"
         extra_hosts:
             - "host.docker.internal:host-gateway"
         volumes:
             - ".:/app"
-            - "./config/nginx/nginx-site.conf:/etc/nginx/conf.d/default.conf" # Nginx proxy config
-            - "./config/supervisor/laravel-supervisor.conf:/etc/supervisor/conf.d/laravel-supervisor.conf" # Supervisor config
+            - "./config/supervisor/laravel-supervisor.conf:/opt/docker/etc/supervisor.d/laravel-supervisor.conf" # Supervisor sample config
         network:
             - app-tire
 
