@@ -14,7 +14,7 @@ ENV SERVICE_NGINX_CLIENT_MAX_BODY_SIZE="50m"
 ENV TIMEZONE=Asia/Jakarta
 ENV PHP_DATE_TIMEZONE=${TIMEZONE}
 ENV APP_ENV=production
-ENV SKIP_COMPOSER=""
+ENV SKIP_COMPOSER=false
 
 COPY ./.docker/config/ /opt/docker/
 COPY ./.docker/errors/ /var/www/errors/
